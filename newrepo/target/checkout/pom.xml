@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.companyname.automobile</groupId>
+  <artifactId>trucks</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-RELEASE</version>
+  <name>trucks Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+  <finalName>trucks</finalName>
+  </build>
+ <profiles>
+    <profile>
+      <id>release-profile</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+        </property>
+      </activation> 
+  <build>
+  <plugins>
+    <plugin>
+    <groupId>org.jboss.as.plugins</groupId>
+    <artifactId>jboss-as-maven-plugin</artifactId>
+    <version>7.5.Final</version>
+    <configuration>
+        <filename>${project.build.finalName}.war</filename>
+        <port>9999</port>
+		<username>mahesh</username>
+        <password>mahesh+5740</password>
+    </configuration>
+</plugin>
+</plugins>
+  </build>
+   </profile>
+  </profiles>
+  <scm>
+   <connection>scm:svn:https://mahesh-pc/svn/MyTest/tags/trucks-1.0-RELEASE</connection>
+   <url>https://mahesh-pc/svn/MyTest/tags/trucks-1.0-RELEASE</url>
+   <developerConnection>scm:svn:https://mahesh-pc/svn/MyTest/tags/trucks-1.0-RELEASE</developerConnection>
+</scm>
+  
+  <distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://localhost:8075/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+   <repository>
+      <id>nexus-snapshots</id>
+      <url>http://localhost:8075/nexus/content/repositories/releases</url>
+   </repository>
+</distributionManagement>
+</project>
